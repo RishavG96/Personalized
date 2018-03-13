@@ -1,5 +1,6 @@
 package rishav.com.personalized;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -39,5 +40,7 @@ public class Company_Show extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //Toast.makeText(this,"Title => "+month[position]+"=> n Description"+number[position], Toast.LENGTH_SHORT).show();
+        Intent i=new Intent(Company_Show.this,StudentCV.class);
+        startActivity(i);
     }
 }

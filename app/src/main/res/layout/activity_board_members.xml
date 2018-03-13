@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="rishav.com.personalized.BoardMembers"
+    android:background="#FFD700">
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button10"
+        android:layout_marginTop="126dp"
+        android:background="#000000"
+        android:text="Track Progress"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button9"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:background="#000000"
+        android:textColor="#FFFFFF"
+        android:text="Allot Work" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp"
+        android:background="#000000"
+        android:textColor="#FFFFFF"
+        android:text="Show Heads and Managers" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textSize="20dp"
+        android:text="Welcome" />
+</RelativeLayout>

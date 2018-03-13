@@ -1,5 +1,6 @@
 package rishav.com.personalized;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -29,19 +30,16 @@ public class Main2Activity extends AppCompatActivity {
         pass2=(EditText)findViewById(R.id.editText8);
         pass3=(EditText)findViewById(R.id.editText3);
         db=openOrCreateDatabase("mydb",MODE_PRIVATE,null);
-        if(db!=null)
-        {
+
             try
             {
-                db.execSQL("create table companylogin(cmpname varchar(50), cmpdetails varchar(100), username varchar(50), password varchar(25))");
+                db.execSQL("create table IF NOT EXISTS companylogin(cmpname varchar(50), cmpdetails varchar(100), username varchar(50), password varchar(25))");
             }
             catch (Exception e)
             {
-                Toast.makeText(Main2Activity.this,"Error here",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Main2Activity.this,"Error here",Toast.LENGTH_SHORT).show();
             }
-        }
-        un1.setVisibility(View.INVISIBLE);
-        pass1.setVisibility(View.INVISIBLE);
+
         compname.setVisibility(View.INVISIBLE);
         compdesc.setVisibility(View.INVISIBLE);
         un2.setVisibility(View.INVISIBLE);
@@ -137,7 +135,9 @@ public class Main2Activity extends AppCompatActivity {
                     }
                     if(flag==1)
                     {
-                        Toast.makeText(Main2Activity.this,"Correct",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Main2Activity.this,"Correct",Toast.LENGTH_SHORT).show();
+                        Intent i=new Intent(Main2Activity.this,Main3Activity.class);
+                        startActivity(i);
                     }
                 }
             }
