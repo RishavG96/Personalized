@@ -1,5 +1,6 @@
 package rishav.com.personalized;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -89,16 +90,55 @@ public class Main2Activity extends AppCompatActivity {
                     }
                     if(!pass.equals("Error"))
                     {
-                        db.execSQL("insert into companylogin values ( '"+cn+"', '"+cd+"', '"+un+"', '"+pass+"' )");
+                        Cursor c=db.rawQuery("select * from companylogin",null);
+                        int flag=0;
+                        while(c.moveToNext())
+                        {
+                            if(un.equals(c.getString(2)) && pass.equals(c.getString(3)))
+                            {
+                                flag=1;
+                                break;
+                            }
+                        }
+                        if(flag==0) {
+                            db.execSQL("insert into companylogin values ( '" + cn + "', '" + cd + "', '" + un + "', '" + pass + "' )");
+                            Toast.makeText(Main2Activity.this, "Values Inserted, please Login", Toast.LENGTH_SHORT).show();
+                            un1.setVisibility(View.VISIBLE);
+                            pass1.setVisibility(View.VISIBLE);
+                            compname.setVisibility(View.INVISIBLE);
+                            compdesc.setVisibility(View.INVISIBLE);
+                            un2.setVisibility(View.INVISIBLE);
+                            pass2.setVisibility(View.INVISIBLE);
+                            pass3.setVisibility(View.INVISIBLE);
+                        }
+                        else
+                        {
+                            Toast.makeText(Main2Activity.this,"Username Taken Up",Toast.LENGTH_SHORT).show();
+                        }
                     }
                     else{
-                        Toast.makeText(Main2Activity.this,"PAssword is different", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Main2Activity.this,"Password is different", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else
                 {
                     //login
-
+                    String u=un1.getText()+"";
+                    String p=pass1.getText()+"";
+                    Cursor c=db.rawQuery("select * from companylogin",null);
+                    int flag=0;
+                    while(c.moveToNext())
+                    {
+                        if(u.equals(c.getString(2)) && p.equals(c.getString(3)))
+                        {
+                            flag=1;
+                            break;
+                        }
+                    }
+                    if(flag==1)
+                    {
+                        Toast.makeText(Main2Activity.this,"Correct",Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
