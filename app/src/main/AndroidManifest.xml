@@ -20,7 +20,9 @@
         <activity android:name=".Company_Show" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".BoardMembers" />
-        <activity android:name=".StudentCV"></activity>
+        <activity android:name=".StudentCV" />
+        <activity android:name=".ChiefAllotWork" />
+        <activity android:name=".ShowAllEmployees"></activity>
     </application>
 
 </manifest>

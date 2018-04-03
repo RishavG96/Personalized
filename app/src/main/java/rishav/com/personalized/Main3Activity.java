@@ -35,7 +35,7 @@ public class Main3Activity extends AppCompatActivity {
     //SQLiteDatabase db;
     private DatabaseReference mDatabase;
     int count=0,flag;
-    String u,p;
+    String u,p,des;
     static String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +87,9 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(tv.getVisibility()==View.VISIBLE) {
-                    String des = sp.getSelectedItem() + "";
-                    String u= et1.getText()+"";
-                    String p="";
+                    des = sp.getSelectedItem() + "";
+                    u= et1.getText()+"";
+                    p="";
                     if((et2.getText()+"").equals(et3.getText()+""))
                         p= et2.getText()+"";
                     else
@@ -104,24 +104,28 @@ public class Main3Activity extends AppCompatActivity {
                                 Map post=(Map)dataSnapshot.getValue();
                                 //Toast.makeText(StudentCV.this,post+"",Toast.LENGTH_SHORT).show();
                                 Set s=post.keySet();
-                                //Toast.makeText(StudentCV.this,s+"",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Main3Activity.this,s+"",Toast.LENGTH_SHORT).show();
                                 count=0;
                                 for(Object o:s)
                                 {
-                                    //Toast.makeText(StudentCV.this,s+"",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Main3Activity.this,o+"",Toast.LENGTH_SHORT).show();
                                     String temp=((String)o).substring(1);
-                                    count=Integer.parseInt(temp);
+                                    Toast.makeText(Main3Activity.this,temp+"",Toast.LENGTH_SHORT).show();
+                                    int t=Integer.parseInt(temp);
+                                    if(t>count)
+                                        count=t;
                                 }
                                 count++;
+                                String t[]=des.split(" ");
+                                String sdes=t[0];
+                                writeNewUser("E"+count,Main2Activity.compid,sdes,des+"",u+"",p+"");
+                                Toast.makeText(Main3Activity.this, "Values Inserted, please Login", Toast.LENGTH_SHORT).show();
                             }
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
                             }
                         });
-                        String t[]=des.split(" ");
-                        String sdes=t[0];
-                        writeNewUser("E"+count,Main2Activity.compid,sdes,des+"",u+"",p+"");
-                            Toast.makeText(Main3Activity.this, "Values Inserted, please Login", Toast.LENGTH_SHORT).show();
+
                             tv.setVisibility(View.INVISIBLE);
                             sp.setVisibility(View.INVISIBLE);
                             et1.setVisibility(View.INVISIBLE);
@@ -151,6 +155,7 @@ public class Main3Activity extends AppCompatActivity {
                                 HashMap hm=(HashMap) e.getValue();
                                 Set<Map.Entry> s1=hm.entrySet();
                                 //Toast.makeText(Main2Activity.this,s1+"",Toast.LENGTH_SHORT).show();
+                                p1=0;
                                 for(Map.Entry e1:s1)
                                 {
                                     if(e1.getKey().equals("username") && e1.getValue().equals(u+""))
@@ -163,14 +168,14 @@ public class Main3Activity extends AppCompatActivity {
                                         p1++;
                                     }
                                 }
+                                Toast.makeText(Main3Activity.this,""+p1,Toast.LENGTH_SHORT).show();
+                                if(p1==2){
+                                    //Toast.makeText(Main2Activity.this,"Correct",Toast.LENGTH_SHORT).show();
+                                    Intent i=new Intent(Main3Activity.this,BoardMembers.class);
+                                    startActivity(i);
+                                }
                             }
                             //Toast.makeText(Main3Activity.this,p1+"",Toast.LENGTH_SHORT).show();
-                            if(p1==2){
-                                //Toast.makeText(Main3Activity.this,"Hello",Toast.LENGTH_SHORT).show();
-                                //Toast.makeText(Main2Activity.this,"Correct",Toast.LENGTH_SHORT).show();
-                                Intent i=new Intent(Main3Activity.this,BoardMembers.class);
-                                startActivity(i);
-                            }
                         }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {

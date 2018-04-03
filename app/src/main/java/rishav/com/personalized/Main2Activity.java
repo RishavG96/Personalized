@@ -107,7 +107,9 @@ public class Main2Activity extends AppCompatActivity {
                                 {
                                     //Toast.makeText(StudentCV.this,s+"",Toast.LENGTH_SHORT).show();
                                     String temp=((String)o).substring(1);
-                                    count=Integer.parseInt(temp);
+                                    int t=Integer.parseInt(temp);
+                                    if(t>count)
+                                        count=t;
                                 }
                                 count++;
                             }
