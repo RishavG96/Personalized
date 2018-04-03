@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="rishav.com.personalized.BoardMembers"
-    android:background="@color/colorPrimaryDark">
+    android:background="@drawable/img1">
 
     <Button
         android:id="@+id/button9"
@@ -14,9 +14,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/button10"
         android:layout_marginTop="126dp"
-        android:background="#000000"
+        android:background="@drawable/mybutton"
         android:text="Track Progress"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/button10"
@@ -25,7 +25,7 @@
         android:layout_below="@+id/button9"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
-        android:background="#000000"
+        android:background="@drawable/mybutton"
         android:textColor="#FFFFFF"
         android:text="Allot Work" />
 
@@ -36,7 +36,7 @@
         android:layout_below="@+id/button10"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="58dp"
-        android:background="#000000"
+        android:background="@drawable/mybutton"
         android:textColor="#FFFFFF"
         android:text="Show Heads and Managers" />
 
@@ -47,5 +47,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:textSize="20dp"
-        android:text="Welcome" />
+        android:text="Welcome"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 </RelativeLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="rishav.com.personalized.Main3Activity"
-    android:background="@color/colorPrimaryDark">
+    android:background="@drawable/img1">
 
     <Button
         android:id="@+id/button6"
@@ -17,7 +17,7 @@
         android:layout_marginTop="37dp"
         android:text="Login"
         android:textColor="#FFFFFF"
-        android:background="#000000"/>
+        android:background="@drawable/mybutton"/>
 
     <Button
         android:id="@+id/button7"
@@ -28,7 +28,7 @@
         android:layout_toEndOf="@+id/button6"
         android:text="Sign Up"
         android:textColor="#FFFFFF"
-        android:background="#000000"/>
+        android:background="@drawable/mybutton"/>
 
     <TextView
         android:id="@+id/textView"
@@ -37,7 +37,8 @@
         android:layout_alignStart="@+id/button6"
         android:layout_below="@+id/button6"
         android:layout_marginTop="49dp"
-        android:text="Your Degisnation" />
+        android:text="Your Degisnation"
+        android:textColor="#FFFFFF"/>
 
     <Spinner
         android:id="@+id/spinner"
@@ -55,7 +56,9 @@
         android:layout_centerVertical="true"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Enter Username" />
+        android:hint="Enter Username"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/editText9"
@@ -66,7 +69,9 @@
         android:layout_marginTop="21dp"
         android:ems="10"
         android:hint="Enter Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/editText10"
@@ -77,7 +82,9 @@
         android:layout_marginTop="26dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Confirm Password"/>
+        android:hint="Confirm Password"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/button8"
@@ -87,7 +94,7 @@
         android:layout_alignParentStart="true"
         android:text="Submit"
         android:textColor="#FFFFFF"
-        android:background="#000000" />
+        android:background="@drawable/mybutton"/>
 
     <EditText
         android:id="@+id/editText11"
@@ -97,7 +104,9 @@
         android:layout_alignTop="@+id/spinner"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Enter username" />
+        android:hint="Enter username"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/editText12"
@@ -108,7 +117,9 @@
         android:layout_marginTop="27dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Enter password"/>
+        android:hint="Enter password"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -117,5 +128,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:textSize="26dp"
-        android:text="Employer Login" />
+        android:text="Employer Login"
+        android:textColor="#FFFFFF"/>
 </RelativeLayout>
