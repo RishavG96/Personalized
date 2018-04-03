@@ -3,7 +3,4 @@
     <item  android:id="@+id/item1"
         android:title="Add Heads/Managers"
         android:background="@drawable/customshape"/>
-    <item  android:id="@+id/item2"
-        android:title="Do something if needed"
-        android:background="@drawable/customshape"/>
 </menu>

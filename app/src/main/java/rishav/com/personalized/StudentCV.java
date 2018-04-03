@@ -30,7 +30,7 @@ public class StudentCV extends AppCompatActivity {
     Calendar myCalendar;
     RadioButton male,female;
     Button ok;
-    String ctr="S1";
+    String ctr="S1",n,a,dob,g,c,e;
     int count=0;
     private DatabaseReference mDatabase;
     @Override
@@ -51,16 +51,16 @@ public class StudentCV extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String n=name.getText()+"";
-                String a=age.getText()+"";
-                String dob=et.getText()+"";
-                String g="";
+                 n=name.getText()+"";
+                 a=age.getText()+"";
+                 dob=et.getText()+"";
+                 g="";
                 if(male.isChecked())
                     g=male.getText()+"";
                 else
                     g=female.getText()+"";
-                String c=cv.getText()+"";
-                String e=email.getText()+"";
+                 c=cv.getText()+"";
+                 e=email.getText()+"";
                 mDatabase.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -78,12 +78,13 @@ public class StudentCV extends AppCompatActivity {
                                 count=t;
                         }
                         count++;
+                        writeNewUser("S"+count,n+"", a+"",dob+"",g+"",c+"",e+"");
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                     }
                 });
-                writeNewUser("S"+count,n+"", a+"",dob+"",g+"",c+"",e+"");
+
             }
         });
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {

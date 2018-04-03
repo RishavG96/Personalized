@@ -1,9 +1,12 @@
 package rishav.com.personalized;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,7 +24,8 @@ import java.util.Set;
 
 public class ShowAllEmployees extends AppCompatActivity {
 
-    ArrayList emp;
+    static ArrayList emp;
+    static int pos;
     ArrayAdapter adapter;
     ListView listView;
     private DatabaseReference mDatabase;
@@ -59,6 +63,14 @@ public class ShowAllEmployees extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                pos=position;
+                Intent i=new Intent(ShowAllEmployees.this,EmpDetails.class);
+                startActivity(i);
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,10 +82,8 @@ public class ShowAllEmployees extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
-                Toast.makeText(getApplicationContext(),"Item 1 Selected",Toast.LENGTH_LONG).show();
-                return true;
-            case R.id.item2:
-                Toast.makeText(getApplicationContext(),"Item 2 Selected",Toast.LENGTH_LONG).show();
+                Intent i=new Intent(ShowAllEmployees.this,AddEmp.class);
+                startActivity(i);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

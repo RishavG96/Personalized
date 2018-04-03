@@ -28,7 +28,7 @@ public class Main2Activity extends AppCompatActivity {
     EditText un1,pass1,compname,compdesc,un2,pass2,pass3;
     //SQLiteDatabase db;
     int count=0,flag;
-    String u,p;
+    String u,p,cn,cd,un,pass;
     static String compid;
     private DatabaseReference mDatabase;
     @Override
@@ -82,10 +82,9 @@ public class Main2Activity extends AppCompatActivity {
                 if(un1.getVisibility()==View.INVISIBLE)
                 {
                     //signup
-                    String cn=compname.getText()+"";
-                    String cd=compdesc.getText()+"";
-                    String un=un2.getText()+"";
-                    String pass;
+                     cn=compname.getText()+"";
+                     cd=compdesc.getText()+"";
+                     un=un2.getText()+"";
                     if((pass2.getText()+"").equals(pass3.getText()+"")){
                         pass=pass2.getText()+"";
                     }
@@ -112,12 +111,13 @@ public class Main2Activity extends AppCompatActivity {
                                         count=t;
                                 }
                                 count++;
+                                writeNewUser("C"+count,cn+"",cd+"",un+"",pass+"");
                             }
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
                             }
                         });
-                        writeNewUser("C"+count,cn+"",cd+"",un+"",pass+"");
+
                             un1.setVisibility(View.VISIBLE);
                             pass1.setVisibility(View.VISIBLE);
                             compname.setVisibility(View.INVISIBLE);
@@ -166,15 +166,10 @@ public class Main2Activity extends AppCompatActivity {
                                 if(p1==2)
                                 {
                                     compid=(String)e.getKey();
-                                }
-                            }
-                            //Toast.makeText(Main2Activity.this,p1+"",Toast.LENGTH_SHORT).show();
-                            if(p1==2){
-                                    //Toast.makeText(Main2Activity.this,"Hello",Toast.LENGTH_SHORT).show();
-                                    //Toast.makeText(Main2Activity.this,"Correct",Toast.LENGTH_SHORT).show();
                                     Intent i=new Intent(Main2Activity.this,Main3Activity.class);
                                     startActivity(i);
                                 }
+                            }
                         }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {

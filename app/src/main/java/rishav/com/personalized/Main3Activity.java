@@ -36,7 +36,7 @@ public class Main3Activity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     int count=0,flag;
     String u,p,des;
-    static String name;
+    static String name,empid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,9 +168,9 @@ public class Main3Activity extends AppCompatActivity {
                                         p1++;
                                     }
                                 }
-                                Toast.makeText(Main3Activity.this,""+p1,Toast.LENGTH_SHORT).show();
                                 if(p1==2){
-                                    //Toast.makeText(Main2Activity.this,"Correct",Toast.LENGTH_SHORT).show();
+                                    empid=e.getKey()+"";
+                                    Toast.makeText(Main3Activity.this,""+empid,Toast.LENGTH_SHORT).show();
                                     Intent i=new Intent(Main3Activity.this,BoardMembers.class);
                                     startActivity(i);
                                 }

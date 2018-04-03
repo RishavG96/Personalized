@@ -22,7 +22,9 @@
         <activity android:name=".BoardMembers" />
         <activity android:name=".StudentCV" />
         <activity android:name=".ChiefAllotWork" />
-        <activity android:name=".ShowAllEmployees"></activity>
+        <activity android:name=".ShowAllEmployees" />
+        <activity android:name=".EmpDetails" />
+        <activity android:name=".AddEmp"></activity>
     </application>
 
 </manifest>
