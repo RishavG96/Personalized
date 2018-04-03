@@ -16,7 +16,9 @@
         android:layout_marginTop="61dp"
         android:text="Name"
         tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="52dp" />
+        tools:layout_editor_absoluteY="52dp"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/editText"
@@ -26,7 +28,9 @@
         android:layout_marginStart="44dp"
         android:layout_toEndOf="@+id/textview2"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -35,7 +39,9 @@
         android:layout_alignStart="@+id/textview2"
         android:layout_below="@+id/textview2"
         android:layout_marginTop="51dp"
-        android:text="Age" />
+        android:text="Age"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/editText3"
@@ -44,7 +50,9 @@
         android:layout_alignBottom="@+id/textView7"
         android:layout_alignStart="@+id/editText"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textView9"
@@ -54,7 +62,9 @@
         android:layout_marginEnd="19dp"
         android:layout_marginTop="49dp"
         android:layout_toStartOf="@+id/editText3"
-        android:text="Date of BIrth" />
+        android:text="Date of BIrth"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/editText2"
@@ -63,7 +73,9 @@
         android:layout_alignBottom="@+id/textView9"
         android:layout_alignStart="@+id/editText3"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -76,13 +88,17 @@
             android:id="@+id/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male" />
+            android:text="Male"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#FFFFFF"/>
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:text="Female"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#FFFFFF"/>
     </RadioGroup>
 
     <TextView
@@ -91,7 +107,9 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView9"
         android:layout_alignTop="@+id/radioGroup"
-        android:text="Gender" />
+        android:text="Gender"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/editText4"
@@ -102,7 +120,9 @@
         android:layout_toEndOf="@+id/textView7"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="CV LInk" />
+        android:text="CV LInk"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/editText14"
@@ -113,7 +133,9 @@
         android:layout_marginTop="11dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Email ID" />
+        android:text="Email ID"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/button2"
@@ -121,5 +143,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/radioGroup"
-        android:text="Submit" />
+        android:text="Submit"
+        android:background="@drawable/mybutton"/>
 </RelativeLayout>
