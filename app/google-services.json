@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "526247347116",
+    "firebase_url": "https://personalised-b5c98.firebaseio.com",
+    "project_id": "personalised-b5c98",
+    "storage_bucket": "personalised-b5c98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526247347116:android:b80cf6212846a4ff",
+        "android_client_info": {
+          "package_name": "rishav.com.personalized"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526247347116-3gcb1d3tpfd4ql22r1e72638s011vilj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5MvvKcZ1bgYW-l4aY5j8OD4mWoncmllQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
