@@ -13,6 +13,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class Main3Activity extends AppCompatActivity {
 
     String desig[]={"Select here","Chief Executive Officer","Chief Operating Offier","Chief Financial Officer","Chief Marketing Officer",
@@ -21,7 +32,10 @@ public class Main3Activity extends AppCompatActivity {
     Spinner sp;
     EditText et1,et2,et3, un,pass;
     Button submit,login,signup;
-    SQLiteDatabase db;
+    //SQLiteDatabase db;
+    private DatabaseReference mDatabase;
+    int count=0,flag;
+    String u,p;
     static String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +51,7 @@ public class Main3Activity extends AppCompatActivity {
         submit=(Button)findViewById(R.id.button8);
         login=(Button)findViewById(R.id.button6);
         signup=(Button)findViewById(R.id.button7);
-        db=openOrCreateDatabase("mydb",MODE_PRIVATE,null);
-
-            try
-            {
-                db.execSQL("create table IF NOT EXISTS employerlogin(desig varchar(50),  username varchar(50), password varchar(25))");
-            }
-            catch (Exception e)
-            {
-                //Toast.makeText(Main2Activity.this,"Error here",Toast.LENGTH_SHORT).show();
-            }
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         ArrayAdapter adapter=new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1,desig);
         sp.setAdapter(adapter);
         tv.setVisibility(View.INVISIBLE);
@@ -93,18 +98,27 @@ public class Main3Activity extends AppCompatActivity {
                     }
                     if(!p.equals(""))
                     {
-                        Cursor c=db.rawQuery("select * from employerlogin",null);
-                        int flag=0;
-                        while(c.moveToNext())
-                        {
-                            if(u.equals(c.getString(1)) && p.equals(c.getString(2)))
-                            {
-                                flag=1;
-                                break;
+                        mDatabase.child("employees").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                Map post=(Map)dataSnapshot.getValue();
+                                //Toast.makeText(StudentCV.this,post+"",Toast.LENGTH_SHORT).show();
+                                Set s=post.keySet();
+                                //Toast.makeText(StudentCV.this,s+"",Toast.LENGTH_SHORT).show();
+                                count=0;
+                                for(Object o:s)
+                                {
+                                    //Toast.makeText(StudentCV.this,s+"",Toast.LENGTH_SHORT).show();
+                                    String temp=((String)o).substring(1);
+                                    count=Integer.parseInt(temp);
+                                }
+                                count++;
                             }
-                        }
-                        if(flag==0){
-                            db.execSQL("insert into employerlogin values ( '" + des + "', '" + u+ "', '" + p + "' )");
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+                        writeNewUser("E"+count,des+"",u+"",p+"");
                             Toast.makeText(Main3Activity.this, "Values Inserted, please Login", Toast.LENGTH_SHORT).show();
                             tv.setVisibility(View.INVISIBLE);
                             sp.setVisibility(View.INVISIBLE);
@@ -113,33 +127,79 @@ public class Main3Activity extends AppCompatActivity {
                             et3.setVisibility(View.INVISIBLE);
                             un.setVisibility(View.VISIBLE);
                             pass.setVisibility(View.VISIBLE);
-                        }
+
                     }
                 }
                 else
                 {
-                    String u=un.getText()+"";
-                    String p=pass.getText()+"";
-                    Cursor c=db.rawQuery("select * from employerlogin",null);
-                    int flag=0;
-                    while(c.moveToNext())
-                    {
-                        if(u.equals(c.getString(1)) && p.equals(c.getString(2)))
-                        {
-                            name=c.getString(1);
-                            flag=1;
-                            break;
-                        }
-                    }
-                    if(flag==1)
-                    {
-                        //Toast.makeText(Main3Activity.this,"Correct",Toast.LENGTH_SHORT).show();
+                     u=un.getText()+"";
+                     p=pass.getText()+"";
 
-                        Intent i=new Intent(Main3Activity.this,BoardMembers.class);
-                        startActivity(i);
-                    }
+                    flag=0;
+                    mDatabase.child("employees").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Map post=(Map)dataSnapshot.getValue();
+                            //Toast.makeText(Main2Activity.this,post+"",Toast.LENGTH_SHORT).show();
+                            Set<Map.Entry> s=post.entrySet();
+                            //Toast.makeText(Main2Activity.this,s+"",Toast.LENGTH_SHORT).show();
+                            int p1=0;
+                            for(Map.Entry e:s)
+                            {
+                                HashMap hm=(HashMap) e.getValue();
+                                Set<Map.Entry> s1=hm.entrySet();
+                                //Toast.makeText(Main2Activity.this,s1+"",Toast.LENGTH_SHORT).show();
+                                for(Map.Entry e1:s1)
+                                {
+                                    if(e1.getKey().equals("username") && e1.getValue().equals(u+""))
+                                    {
+                                        name=u;
+                                        p1++;
+                                    }
+                                    if(e1.getKey().equals("pass") && e1.getValue().equals(p+""))
+                                    {
+                                        p1++;
+                                    }
+                                }
+                            }
+                            //Toast.makeText(Main3Activity.this,p1+"",Toast.LENGTH_SHORT).show();
+                            if(p1==2){
+                                //Toast.makeText(Main3Activity.this,"Hello",Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(Main2Activity.this,"Correct",Toast.LENGTH_SHORT).show();
+                                Intent i=new Intent(Main3Activity.this,BoardMembers.class);
+                                startActivity(i);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
                 }
             }
         });
+    }
+    private void writeNewUser(String empId, String designation, String username, String pass) {
+        User2 user = new User2(designation,username, pass);
+
+        mDatabase.child("employees").child(empId).setValue(user);
+
+    }
+    @IgnoreExtraProperties
+    public static class User2 {
+
+        public String desig;
+        public String username;
+        public String pass;
+
+        public User2() {
+            // Default constructor required for calls to DataSnapshot.getValue(User.class)
+        }
+
+        public User2(String desig,String username, String pass) {
+            this.username = username;
+            this.desig=desig;
+            this.pass = pass;
+        }
+
     }
 }
