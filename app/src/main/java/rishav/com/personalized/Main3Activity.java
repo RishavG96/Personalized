@@ -118,7 +118,9 @@ public class Main3Activity extends AppCompatActivity {
                             public void onCancelled(DatabaseError databaseError) {
                             }
                         });
-                        writeNewUser("E"+count,des+"",u+"",p+"");
+                        String t[]=des.split(" ");
+                        String sdes=t[0];
+                        writeNewUser("E"+count,Main2Activity.compid,sdes,des+"",u+"",p+"");
                             Toast.makeText(Main3Activity.this, "Values Inserted, please Login", Toast.LENGTH_SHORT).show();
                             tv.setVisibility(View.INVISIBLE);
                             sp.setVisibility(View.INVISIBLE);
@@ -178,8 +180,8 @@ public class Main3Activity extends AppCompatActivity {
             }
         });
     }
-    private void writeNewUser(String empId, String designation, String username, String pass) {
-        User2 user = new User2(designation,username, pass);
+    private void writeNewUser(String empId,String compid,String sdesignation, String designation, String username, String pass) {
+        User2 user = new User2(compid,sdesignation,designation,username, pass);
 
         mDatabase.child("employees").child(empId).setValue(user);
 
@@ -188,16 +190,19 @@ public class Main3Activity extends AppCompatActivity {
     public static class User2 {
 
         public String desig;
+        public String sdesig;
         public String username;
         public String pass;
-
+        public String compid;
         public User2() {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
 
-        public User2(String desig,String username, String pass) {
+        public User2(String compid,String sdesig,String desig,String username, String pass) {
             this.username = username;
+            this.compid=compid;
             this.desig=desig;
+            this.sdesig=sdesig;
             this.pass = pass;
         }
 

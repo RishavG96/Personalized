@@ -29,6 +29,7 @@ public class Main2Activity extends AppCompatActivity {
     //SQLiteDatabase db;
     int count=0,flag;
     String u,p;
+    static String compid;
     private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +149,7 @@ public class Main2Activity extends AppCompatActivity {
                                 HashMap hm=(HashMap) e.getValue();
                                 Set<Map.Entry> s1=hm.entrySet();
                                 //Toast.makeText(Main2Activity.this,s1+"",Toast.LENGTH_SHORT).show();
+                                p1=0;
                                 for(Map.Entry e1:s1)
                                 {
                                     if(e1.getKey().equals("username") && e1.getValue().equals(u+""))
@@ -158,6 +160,10 @@ public class Main2Activity extends AppCompatActivity {
                                     {
                                         p1++;
                                     }
+                                }
+                                if(p1==2)
+                                {
+                                    compid=(String)e.getKey();
                                 }
                             }
                             //Toast.makeText(Main2Activity.this,p1+"",Toast.LENGTH_SHORT).show();
