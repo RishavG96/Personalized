@@ -68,6 +68,7 @@ public class StudentCV extends AppCompatActivity {
                         Toast.makeText(StudentCV.this,post+"",Toast.LENGTH_SHORT).show();
                         Set s=post.keySet();
                         Toast.makeText(StudentCV.this,s+"",Toast.LENGTH_SHORT).show();
+                        count=0;
                         for(Object o:s)
                         {
                             Toast.makeText(StudentCV.this,s+"",Toast.LENGTH_SHORT).show();

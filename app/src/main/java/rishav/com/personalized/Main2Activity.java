@@ -10,11 +10,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class Main2Activity extends AppCompatActivity {
 
     Button login,signup,submit;
     EditText un1,pass1,compname,compdesc,un2,pass2,pass3;
-    SQLiteDatabase db;
+    //SQLiteDatabase db;
+    int count=0,flag;
+    String u,p;
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,22 +44,12 @@ public class Main2Activity extends AppCompatActivity {
         un2=(EditText)findViewById(R.id.editText7);
         pass2=(EditText)findViewById(R.id.editText8);
         pass3=(EditText)findViewById(R.id.editText3);
-        db=openOrCreateDatabase("mydb",MODE_PRIVATE,null);
-
-            try
-            {
-                db.execSQL("create table IF NOT EXISTS companylogin(cmpname varchar(50), cmpdetails varchar(100), username varchar(50), password varchar(25))");
-            }
-            catch (Exception e)
-            {
-                //Toast.makeText(Main2Activity.this,"Error here",Toast.LENGTH_SHORT).show();
-            }
-
         compname.setVisibility(View.INVISIBLE);
         compdesc.setVisibility(View.INVISIBLE);
         un2.setVisibility(View.INVISIBLE);
         pass2.setVisibility(View.INVISIBLE);
         pass3.setVisibility(View.INVISIBLE);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,19 +93,28 @@ public class Main2Activity extends AppCompatActivity {
                     }
                     if(!pass.equals("Error"))
                     {
-                        Cursor c=db.rawQuery("select * from companylogin",null);
-                        int flag=0;
-                        while(c.moveToNext())
-                        {
-                            if(un.equals(c.getString(2)) && pass.equals(c.getString(3)))
-                            {
-                                flag=1;
-                                break;
+                        //writeNewUser("C1",cn+"",cd+"",un+"",pass+"");
+                        mDatabase.child("companies").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                Map post=(Map)dataSnapshot.getValue();
+                                //Toast.makeText(StudentCV.this,post+"",Toast.LENGTH_SHORT).show();
+                                Set s=post.keySet();
+                                //Toast.makeText(StudentCV.this,s+"",Toast.LENGTH_SHORT).show();
+                                count=0;
+                                for(Object o:s)
+                                {
+                                    //Toast.makeText(StudentCV.this,s+"",Toast.LENGTH_SHORT).show();
+                                    String temp=((String)o).substring(1);
+                                    count=Integer.parseInt(temp);
+                                }
+                                count++;
                             }
-                        }
-                        if(flag==0) {
-                            db.execSQL("insert into companylogin values ( '" + cn + "', '" + cd + "', '" + un + "', '" + pass + "' )");
-                            Toast.makeText(Main2Activity.this, "Values Inserted, please Login", Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+                        writeNewUser("C"+count,cn+"",cd+"",un+"",pass+"");
                             un1.setVisibility(View.VISIBLE);
                             pass1.setVisibility(View.VISIBLE);
                             compname.setVisibility(View.INVISIBLE);
@@ -108,11 +122,6 @@ public class Main2Activity extends AppCompatActivity {
                             un2.setVisibility(View.INVISIBLE);
                             pass2.setVisibility(View.INVISIBLE);
                             pass3.setVisibility(View.INVISIBLE);
-                        }
-                        else
-                        {
-                            Toast.makeText(Main2Activity.this,"Username Taken Up",Toast.LENGTH_SHORT).show();
-                        }
                     }
                     else{
                         Toast.makeText(Main2Activity.this,"Password is different", Toast.LENGTH_SHORT).show();
@@ -121,26 +130,77 @@ public class Main2Activity extends AppCompatActivity {
                 else
                 {
                     //login
-                    String u=un1.getText()+"";
-                    String p=pass1.getText()+"";
-                    Cursor c=db.rawQuery("select * from companylogin",null);
-                    int flag=0;
-                    while(c.moveToNext())
-                    {
-                        if(u.equals(c.getString(2)) && p.equals(c.getString(3)))
-                        {
-                            flag=1;
-                            break;
+                    u=un1.getText()+"";
+                    p=pass1.getText()+"";
+                    //Toast.makeText(Main2Activity.this,u+"",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Main2Activity.this,p+"",Toast.LENGTH_SHORT).show();
+                    flag=0;
+                    mDatabase.child("companies").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Map post=(Map)dataSnapshot.getValue();
+                            //Toast.makeText(Main2Activity.this,post+"",Toast.LENGTH_SHORT).show();
+                            Set<Map.Entry> s=post.entrySet();
+                            //Toast.makeText(Main2Activity.this,s+"",Toast.LENGTH_SHORT).show();
+                            int p1=0;
+                            for(Map.Entry e:s)
+                            {
+                                HashMap hm=(HashMap) e.getValue();
+                                Set<Map.Entry> s1=hm.entrySet();
+                                //Toast.makeText(Main2Activity.this,s1+"",Toast.LENGTH_SHORT).show();
+                                for(Map.Entry e1:s1)
+                                {
+                                    if(e1.getKey().equals("username") && e1.getValue().equals(u+""))
+                                    {
+                                        p1++;
+                                    }
+                                    if(e1.getKey().equals("pass") && e1.getValue().equals(p+""))
+                                    {
+                                        p1++;
+                                    }
+                                }
+                            }
+                            //Toast.makeText(Main2Activity.this,p1+"",Toast.LENGTH_SHORT).show();
+                            if(p1==2){
+                                    //Toast.makeText(Main2Activity.this,"Hello",Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(Main2Activity.this,"Correct",Toast.LENGTH_SHORT).show();
+                                    Intent i=new Intent(Main2Activity.this,Main3Activity.class);
+                                    startActivity(i);
+                                }
                         }
-                    }
-                    if(flag==1)
-                    {
-                        //Toast.makeText(Main2Activity.this,"Correct",Toast.LENGTH_SHORT).show();
-                        Intent i=new Intent(Main2Activity.this,Main3Activity.class);
-                        startActivity(i);
-                    }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
                 }
+
             }
         });
+    }
+    private void writeNewUser(String compId, String cname, String cdesc, String username, String pass) {
+        User1 user = new User1(cname,cdesc,username, pass);
+
+        mDatabase.child("companies").child(compId).setValue(user);
+
+    }
+    @IgnoreExtraProperties
+    public static class User1 {
+
+        public String cname;
+        public String cdesc;
+        public String username;
+        public String pass;
+
+        public User1() {
+            // Default constructor required for calls to DataSnapshot.getValue(User.class)
+        }
+
+        public User1(String cname,String cdesc,String username, String pass) {
+            this.username = username;
+            this.cname=cname;
+            this.cdesc=cdesc;
+            this.pass = pass;
+        }
+
     }
 }
