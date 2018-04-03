@@ -21,8 +21,8 @@ import java.util.Set;
 
 public class AddEmp extends AppCompatActivity {
 
-    String desig[]={"Select here","Manager of Accounts","Head of HR","Head of RnD","Manager of Marketing",
-            "Manager of Products"};
+    String desig[]={"Select here","Head of HR","Head of RnD","Manager of Marketing",
+            "Manager of Finance"};
     Spinner sp;
     EditText username,pass,confirmpass;
     Button b;
