@@ -5,30 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="rishav.com.personalized.MainActivity"
-    android:background="@color/colorPrimaryDark">
+    android:background="@drawable/img1">
 
 
     <Button
         android:id="@+id/button"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/button2"
         android:layout_marginTop="168dp"
         android:text="Company Login"
         android:textColor="#FFFFFF"
-        android:background="#000000"/>
+        android:textSize="25dp"
+        android:background="@drawable/mybutton"/>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="59dp"
         android:text="Student Login"
         android:textColor="#FFFFFF"
-        android:background="#000000"/>
+        android:textSize="25dp"
+        android:background="@drawable/mybutton"/>
 
 
 </RelativeLayout>
