@@ -31,7 +31,8 @@
         <activity android:name=".ShowOnlyEmployees" />
         <activity android:name=".AddEmployee" />
         <activity android:name=".EmployeeDetails" />
-        <activity android:name=".HrSelectEmployee"></activity>
+        <activity android:name=".HrSelectEmployee" />
+        <activity android:name=".Employee"></activity>
     </application>
 
 </manifest>

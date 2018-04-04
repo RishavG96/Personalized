@@ -83,7 +83,7 @@ public class HrAllotWork extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int listPosition = info.position;
         String i=al.get(listPosition)+"";
-        if(item.getTitle().equals("Display/Edit"))
+        if(item.getTitle().equals("Allocate"))
         {
             temp=listPosition;
             Intent i1=new Intent(HrAllotWork.this,HrSelectEmployee.class);

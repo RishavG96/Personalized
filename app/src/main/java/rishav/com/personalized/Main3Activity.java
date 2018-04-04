@@ -170,6 +170,8 @@ public class Main3Activity extends AppCompatActivity {
                                     }
                                     if(e1.getKey().equals("sdesig") && e1.getValue().equals("Head"))
                                         flag=1;
+                                    if(e1.getKey().equals("sdesig") && e1.getValue().equals("Employee"))
+                                        flag=2;
                                 }
                                 if(p1==2 && flag==0){
                                     empid=e.getKey()+"";
@@ -181,6 +183,11 @@ public class Main3Activity extends AppCompatActivity {
                                     empid=e.getKey()+"";
                                     Toast.makeText(Main3Activity.this,""+empid,Toast.LENGTH_SHORT).show();
                                     Intent i=new Intent(Main3Activity.this,HrHead.class);
+                                    startActivity(i);
+                                }else if(p1==2 && flag==2){
+                                    empid=e.getKey()+"";
+                                    Toast.makeText(Main3Activity.this,""+empid,Toast.LENGTH_SHORT).show();
+                                    Intent i=new Intent(Main3Activity.this,Employee.class);
                                     startActivity(i);
                                 }
                             }
