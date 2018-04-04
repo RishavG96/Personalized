@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="rishav.com.personalized.EmployeeDetails">
+    tools:context="rishav.com.personalized.EmployeeDetails"
+    android:background="@drawable/img1">
     <TextView
         android:id="@+id/textView5"
         android:layout_width="120dp"
@@ -14,7 +15,7 @@
         android:layout_marginTop="68dp"
         android:text="Name:"
         android:textColorHint="#FFFFFF"
-        android:textColor="#000000"/>
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textView98"
@@ -24,7 +25,7 @@
         android:layout_marginStart="30dp"
         android:layout_toEndOf="@+id/textView5"
         android:textColorHint="#FFFFFF"
-        android:textColor="#000000"/>
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textView11"
@@ -35,7 +36,7 @@
         android:layout_marginTop="24dp"
         android:text="Designation Title:"
         android:textColorHint="#FFFFFF"
-        android:textColor="#000000"/>
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textView99"
@@ -44,7 +45,7 @@
         android:layout_alignStart="@+id/textView98"
         android:layout_alignTop="@+id/textView11"
         android:textColorHint="#FFFFFF"
-        android:textColor="#000000"/>
+        android:textColor="#FFFFFF"/>
 
 
 </RelativeLayout>
