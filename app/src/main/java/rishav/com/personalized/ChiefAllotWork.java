@@ -37,6 +37,7 @@ public class ChiefAllotWork extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chief_allot_work);
+        Toast.makeText(ChiefAllotWork.this,"here",Toast.LENGTH_SHORT).show();
         wdesc=(EditText)findViewById(R.id.editText);
         sp=(Spinner)findViewById(R.id.spinner3);
         rb=(RatingBar)findViewById(R.id.ratingBar);

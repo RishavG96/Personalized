@@ -15,7 +15,7 @@ public class BoardMembers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_members);
-        allotwork=(Button)findViewById(R.id.button10);
+        allotwork=(Button)findViewById(R.id.button101);
         showemps=(Button)findViewById(R.id.button11);
         tv=(TextView)findViewById(R.id.textView8);
         tv.setText("Welcome "+Main3Activity.name);
