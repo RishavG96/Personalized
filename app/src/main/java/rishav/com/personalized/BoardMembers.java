@@ -19,12 +19,6 @@ public class BoardMembers extends AppCompatActivity {
         showemps=(Button)findViewById(R.id.button11);
         tv=(TextView)findViewById(R.id.textView8);
         tv.setText("Welcome "+Main3Activity.name);
-        trackprogress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         allotwork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

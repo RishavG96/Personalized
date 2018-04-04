@@ -19,12 +19,6 @@ public class HrHead extends AppCompatActivity {
         showemps=(Button)findViewById(R.id.button92);
         tv=(TextView)findViewById(R.id.textView100);
         tv.setText("Welcome "+Main3Activity.name);
-        trackprogress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         allotwork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
