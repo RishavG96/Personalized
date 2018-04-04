@@ -15,7 +15,6 @@ public class BoardMembers extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_members);
-        trackprogress=(Button)findViewById(R.id.button9);
         allotwork=(Button)findViewById(R.id.button10);
         showemps=(Button)findViewById(R.id.button11);
         tv=(TextView)findViewById(R.id.textView8);
