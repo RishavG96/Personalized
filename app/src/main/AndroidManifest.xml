@@ -32,7 +32,8 @@
         <activity android:name=".AddEmployee" />
         <activity android:name=".EmployeeDetails" />
         <activity android:name=".HrSelectEmployee" />
-        <activity android:name=".Employee"></activity>
+        <activity android:name=".Employee" />
+        <activity android:name=".CV"></activity>
     </application>
 
 </manifest>
