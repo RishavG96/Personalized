@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="rishav.com.personalized.AddEmployee">
+
+    <TextView
+        android:id="@+id/textView93"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="82dp"
+        android:visibility="invisible"
+        android:text="Designation:"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
+
+    <Spinner
+        android:id="@+id/spinner5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView93"
+        android:visibility="invisible"
+        android:layout_marginTop="13dp"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        style="@style/MySpinnerLook"/>
+
+    <EditText
+        android:id="@+id/editText94"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/spinner2"
+        android:layout_marginTop="33dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter Username"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
+
+    <EditText
+        android:id="@+id/editText95"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText94"
+        android:layout_below="@+id/editText94"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Password"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
+
+    <EditText
+        android:id="@+id/editText96"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText95"
+        android:layout_marginTop="33dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Confirm Password"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/button97"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="Submit"
+        android:background="@drawable/mybutton"/>
+</RelativeLayout>

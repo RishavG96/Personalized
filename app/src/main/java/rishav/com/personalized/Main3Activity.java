@@ -36,7 +36,7 @@ public class Main3Activity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     int count=0,flag;
     String u,p,des;
-    static String name,empid;
+    static String name="",empid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,6 +150,7 @@ public class Main3Activity extends AppCompatActivity {
                             Set<Map.Entry> s=post.entrySet();
                             //Toast.makeText(Main2Activity.this,s+"",Toast.LENGTH_SHORT).show();
                             int p1=0;
+                            int flag=0;
                             for(Map.Entry e:s)
                             {
                                 HashMap hm=(HashMap) e.getValue();
@@ -167,11 +168,19 @@ public class Main3Activity extends AppCompatActivity {
                                     {
                                         p1++;
                                     }
+                                    if(e1.getKey().equals("sdesig") && e1.getValue().equals("Head"))
+                                        flag=1;
                                 }
-                                if(p1==2){
+                                if(p1==2 && flag==0){
                                     empid=e.getKey()+"";
                                     Toast.makeText(Main3Activity.this,""+empid,Toast.LENGTH_SHORT).show();
                                     Intent i=new Intent(Main3Activity.this,BoardMembers.class);
+                                    startActivity(i);
+                                }
+                                else if(p1==2 && flag==1){
+                                    empid=e.getKey()+"";
+                                    Toast.makeText(Main3Activity.this,""+empid,Toast.LENGTH_SHORT).show();
+                                    Intent i=new Intent(Main3Activity.this,HrHead.class);
                                     startActivity(i);
                                 }
                             }

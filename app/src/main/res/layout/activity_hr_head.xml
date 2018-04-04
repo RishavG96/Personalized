@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="rishav.com.personalized.HrHead">
+    <Button
+        android:id="@+id/button90"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button91"
+        android:layout_marginTop="126dp"
+        android:background="@drawable/mybutton"
+        android:text="Track Progress"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/button91"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button90"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/mybutton"
+        android:textColor="#FFFFFF"
+        android:text="Allot Work" />
+
+    <Button
+        android:id="@+id/button92"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button91"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp"
+        android:background="@drawable/mybutton"
+        android:textColor="#FFFFFF"
+        android:text="Show Employees" />
+
+    <TextView
+        android:id="@+id/textView100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textSize="20dp"
+        android:text="Welcome"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
+</RelativeLayout>
+

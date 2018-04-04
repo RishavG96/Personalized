@@ -25,7 +25,13 @@
         <activity android:name=".ShowAllEmployees" />
         <activity android:name=".EmpDetails" />
         <activity android:name=".AddEmp" />
-        <activity android:name=".ShowWorks"></activity>
+        <activity android:name=".ShowWorks" />
+        <activity android:name=".HrHead" />
+        <activity android:name=".HrAllotWork" />
+        <activity android:name=".ShowOnlyEmployees" />
+        <activity android:name=".AddEmployee" />
+        <activity android:name=".EmployeeDetails" />
+        <activity android:name=".HrSelectEmployee"></activity>
     </application>
 
 </manifest>
