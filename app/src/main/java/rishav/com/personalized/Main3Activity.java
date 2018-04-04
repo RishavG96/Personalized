@@ -168,9 +168,11 @@ public class Main3Activity extends AppCompatActivity {
                                     {
                                         p1++;
                                     }
-                                    if(e1.getKey().equals("sdesig") && e1.getValue().equals("Head"))
+                                    if(e1.getKey().equals("sdesig") && e1.getValue().equals("Chief"))
+                                        flag=0;
+                                    else if(e1.getKey().equals("sdesig") && e1.getValue().equals("Head"))
                                         flag=1;
-                                    if(e1.getKey().equals("sdesig") && e1.getValue().equals("Employee"))
+                                    else if(e1.getKey().equals("sdesig") && e1.getValue().equals("Employee"))
                                         flag=2;
                                 }
                                 if(p1==2 && flag==0){
