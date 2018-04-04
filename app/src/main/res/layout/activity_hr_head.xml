@@ -4,39 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="rishav.com.personalized.HrHead">
-    <Button
-        android:id="@+id/button90"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/button91"
-        android:layout_marginTop="126dp"
-        android:background="@drawable/mybutton"
-        android:text="Track Progress"
-        android:textColor="#FFFFFF"/>
+    tools:context="rishav.com.personalized.HrHead"
+    android:background="@drawable/img1">
 
     <Button
         android:id="@+id/button91"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button90"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="150dp"
         android:background="@drawable/mybutton"
-        android:textColor="#FFFFFF"
-        android:text="Allot Work" />
+        android:text="Allot Work"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button92"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button91"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"
+        android:layout_marginBottom="185dp"
         android:background="@drawable/mybutton"
-        android:textColor="#FFFFFF"
-        android:text="Show Employees" />
+        android:text="Show Employees"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView100"

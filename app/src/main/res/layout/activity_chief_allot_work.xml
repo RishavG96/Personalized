@@ -15,10 +15,11 @@
         android:layout_below="@+id/textView"
         android:layout_marginTop="17dp"
         android:ems="10"
-        android:textColor="#FFFFFF"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="76dp" />
+        tools:layout_editor_absoluteY="76dp"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textView"
@@ -27,7 +28,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="19dp"
-        android:text="Work Description" />
+        android:text="Work Description"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -36,7 +39,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/editText"
         android:layout_marginTop="22dp"
-        android:text="Department" />
+        android:text="Department"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <Spinner
         android:id="@+id/spinner3"
@@ -44,7 +49,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:id="@+id/textView16"
@@ -53,7 +60,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/spinner3"
         android:layout_marginTop="35dp"
-        android:text="Priority" />
+        android:text="Priority"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -61,7 +70,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView16"
-        android:layout_marginTop="29dp" />
+        android:layout_marginTop="29dp"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/button13"
@@ -70,5 +81,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="62dp"
-        android:text="Submit" />
+        android:text="Submit"
+        android:background="@drawable/mybutton"/>
 </RelativeLayout>

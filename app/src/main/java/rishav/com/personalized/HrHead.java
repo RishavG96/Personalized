@@ -15,17 +15,10 @@ public class HrHead extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hr_head);
-        trackprogress=(Button)findViewById(R.id.button90);
         allotwork=(Button)findViewById(R.id.button91);
         showemps=(Button)findViewById(R.id.button92);
         tv=(TextView)findViewById(R.id.textView100);
         tv.setText("Welcome "+Main3Activity.name);
-        trackprogress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         allotwork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
