@@ -7,34 +7,68 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Company_Show extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView lview;
     ListViewAdapter lviewAdapter;
+    ArrayList al;
     SQLiteDatabase db;
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company__show);
-        db=openOrCreateDatabase("mydb",MODE_PRIVATE,null);
-        lview = (ListView) findViewById(R.id.listView2);
-        Cursor c=db.rawQuery("select * from companylogin",null);
-        ArrayList ar=new ArrayList();
-        ArrayList ar1=new ArrayList();
-        while(c.moveToNext())
-        {
-            ar.add(c.getString(0));
-            ar1.add(c.getString(1));
-        }
-        lviewAdapter = new ListViewAdapter(this, ar, ar1);
-        lview.setAdapter(lviewAdapter);
+        lview=(ListView)findViewById(R.id.listView2);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        al=new ArrayList();
+        mDatabase.child("companies").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Map post=(Map)dataSnapshot.getValue();
+                //Toast.makeText(Main2Activity.this,post+"",Toast.LENGTH_SHORT).show();
+                Set<Map.Entry> s=post.entrySet();
+                //Toast.makeText(Main2Activity.this,s+"",Toast.LENGTH_SHORT).show();
+                int p1=0;
+                for(Map.Entry e:s)
+                {
+                    HashMap hm=(HashMap) e.getValue();
+                    Set<Map.Entry> s1=hm.entrySet();
+                    //Toast.makeText(Main2Activity.this,s1+"",Toast.LENGTH_SHORT).show();
+                    p1=0;
+                    for(Map.Entry e1:s1)
+                    {
+                        if(e1.getKey().equals("username") )
+                        {
+                            al.add(e1.getValue());
+                        }
 
-        lview.setOnItemClickListener(this);
+                    }
+                    ArrayAdapter adapter=new ArrayAdapter(Company_Show.this, android.R.layout.simple_list_item_1,al);
+                    lview.setAdapter(adapter);
+                    lview.setOnItemClickListener(Company_Show.this);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+
     }
 
     @Override
